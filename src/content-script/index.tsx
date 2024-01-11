@@ -4,7 +4,7 @@ import App from "./App";
 function injectReact() {
   const root = document.createElement("div");
 
-  // example of injecting and styling the React root
+  // Example of injecting and styling the React root
   root.style.cssText = `
     position: fixed;
     top: 0;
