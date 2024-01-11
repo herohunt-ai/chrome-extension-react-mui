@@ -1,3 +1,4 @@
+import createCache from "@emotion/cache";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -10,19 +11,25 @@ function injectFont() {
 }
 
 function injectReact() {
-  const root = document.createElement("div");
+  const container = document.createElement("div");
 
   // Example of injecting and styling the React root
-  root.style.cssText = `
+  container.style.cssText = `
     position: fixed;
     top: 0;
     left: 0;
     z-index: 99999
   `;
-  document.body.appendChild(root);
+  document.body.appendChild(container);
 
-  const reactRoot = ReactDOM.createRoot(root);
-  reactRoot.render(<App />);
+  // Put the React root in Shadow DOM to avoid CSS conflicts
+  const shadowRoot = container.attachShadow({ mode: "open" });
+  const rootElement = document.createElement("div");
+  shadowRoot.appendChild(rootElement);
+  const cache = createCache({ key: "mui", container: rootElement });
+
+  const reactRoot = ReactDOM.createRoot(rootElement);
+  reactRoot.render(<App cache={cache} />);
 }
 
 injectFont();

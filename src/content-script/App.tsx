@@ -1,3 +1,4 @@
+import { CacheProvider, EmotionCache } from "@emotion/react";
 import {
   CssBaseline,
   Paper,
@@ -8,20 +9,26 @@ import {
 import ChromeIcon from "../../static/chrome.svg";
 import theme from "../theme";
 
-function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Paper sx={{ padding: 2 }}>
-        <Typography>Hello World from content script!</Typography>
+interface AppProps {
+  cache: EmotionCache;
+}
 
-        {/* Example of using SVG files as components */}
-        <SvgIcon
-          component={ChromeIcon}
-          sx={{ fill: "none", color: "primary.main" }}
-        />
-      </Paper>
-    </ThemeProvider>
+function App({ cache }: AppProps) {
+  return (
+    <CacheProvider value={cache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Paper sx={{ padding: 2 }}>
+          <Typography>Hello World from content script!</Typography>
+
+          {/* Example of using SVG files as components */}
+          <SvgIcon
+            component={ChromeIcon}
+            sx={{ fill: "none", color: "primary.main" }}
+          />
+        </Paper>
+      </ThemeProvider>
+    </CacheProvider>
   );
 }
 

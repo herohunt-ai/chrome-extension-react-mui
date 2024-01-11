@@ -21,6 +21,7 @@ Start building your Chrome extension quickly with this modern template, includin
 - 🛠️ Use any NPM package and split your code with [Webpack](https://webpack.js.org/)
 - ⚡️ See your changes quickly with blazing fast builds – rebuild in less than 150 ms thanks to [esbuild-loader](https://github.com/privatenumber/esbuild-loader)
 - 📄 Customize the `manifest.json` for production and development
+- 👻 Inject UI without CSS conflicts thanks to the [Shadow DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)
 - 📂 Include SVG images like React components with [SVGR](https://react-svgr.com/)
 - 💯 Avoid bugs and ensure great code quality with [TypeScript](https://www.typescriptlang.org/), [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
 
