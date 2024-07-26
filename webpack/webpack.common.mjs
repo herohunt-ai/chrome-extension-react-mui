@@ -26,7 +26,10 @@ export default {
   },
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: "static", to: "../static" }],
+      patterns: [
+        { from: "static", to: "../static" },
+        { from: "_locales", to: "../_locales", noErrorOnMissing: true },
+      ],
     }),
   ],
   resolve: {
